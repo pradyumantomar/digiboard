@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { socket } from "@/common/lib/soket";
+
+let moves: [number, number][] = [];
 
 export const useDraw = (
   options: CtxOptions,
@@ -14,4 +17,39 @@ export const useDraw = (
       ctx.strokeStyle = options.lineColor;
     }
   });
+
+  const handleStartDrawing = (x: number, y: number) => {
+    if (!ctx) return;
+
+    moves = [[x, y]];
+    setDrawing(true);
+
+    ctx.beginPath();
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  };
+
+  const handleEndDrawing = () => {
+    if (!ctx) return;
+
+    socket.emit("draw", moves, options);
+
+    setDrawing(false);
+    ctx.closePath();
+  };
+
+  const handleDraw = (x: number, y: number) => {
+    if (ctx && drawing) {
+      moves.push([x, y]);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+  };
+
+  return {
+    handleStartDrawing,
+    handleDraw,
+    handleEndDrawing,
+    drawing,
+  };
 };
