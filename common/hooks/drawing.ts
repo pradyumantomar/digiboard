@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { socket } from "@/common/lib/soket";
+import { socket } from "@/common/lib/socket";
 
 let moves: [number, number][] = [];
 
