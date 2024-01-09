@@ -22,20 +22,6 @@ export default function Home() {
   );
 
   useEffect(() => {
-    const handleResize = () => {
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
-  useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas) {
       const ctx = canvas.getContext("2d");
