@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useViewPortSize = () => {
+export const useViewportSize = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
 
@@ -10,9 +10,9 @@ export const useViewPortSize = () => {
       setHeight(window.innerHeight);
     };
 
-    window.addEventListener("resize", handleResize);
-
     handleResize();
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
