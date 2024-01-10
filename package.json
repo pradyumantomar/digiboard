@@ -6,9 +6,8 @@
     "dev:client": "ts-node server/index.ts",
     "build:server": "tsc --project tsconfig.server.json",
     "build:next": "next build",
-    "build:vercel": "npm upgrade react@latest react-dom@latest",
     "build": "npm-run-all build:*",
-    "start": "NODE_ENV=production node build/index.js",
+    "start": " node build/index.js",
     "lint": "next lint"
   },
   "dependencies": {
