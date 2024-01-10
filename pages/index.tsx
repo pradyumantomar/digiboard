@@ -1,8 +1,9 @@
-import { Inter } from "next/font/google";
-import Canvas from "@/modules/canvas/components/Canvas";
+import type { NextPage } from "next";
 
-const inter = Inter({ subsets: ["latin"] });
+import Home from "@/modules/home/components/Home";
 
-export default function Home() {
-  <Canvas />;
-}
+const HomePage: NextPage = () => {
+  return <Home />;
+};
+
+export default HomePage;
